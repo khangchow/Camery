@@ -1,4 +1,4 @@
-Hello, welcome to Camery - my first public library so there should be a lot of mistakes and bugs >.< . So please feel free to create you MR if you have any advise or contribution for Camery. Thank you <3
+Hello, welcome to Camery - my first public library so there should be a lot of mistakes and bugs >.< . So please feel free to create your MR if you have any advise or contribution for Camery. Thank you <3
 
 Here are steps to import Camery into your own project:
 
