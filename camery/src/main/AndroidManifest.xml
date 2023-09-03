@@ -11,7 +11,8 @@
 
     <application>
         <!-- Add your library's activity declaration -->
-        <activity android:name="com.chow.camery.CameryActivity">
+        <activity android:name="com.chow.camery.CameryActivity"
+            android:theme="@style/camery_theme">
             <!-- Add intent filters or other attributes if needed -->
         </activity>
     </application>
