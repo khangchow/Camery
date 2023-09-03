@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">CustomCamera</string>
+    <string name="menu_item_gallery">Thư Viện</string>
+    <string name="action_bar_title_take_photo">Chụp ảnh</string>
+</resources>

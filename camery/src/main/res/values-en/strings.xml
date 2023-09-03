@@ -1,0 +1,4 @@
+<resources>
+    <string name="menu_item_gallery">Gallery</string>
+    <string name="action_bar_title_take_photo">Take Photo</string>
+</resources>
