@@ -13,7 +13,7 @@ Here are steps to import Camery into your own project:
 ```
 private val imageLauncher = registerImageLauncher {
         if (it == null) return@registerImageLauncher
-        // Do whatever you want will the uri
+        // Do whatever you want with the uri
     }
 ```
 
