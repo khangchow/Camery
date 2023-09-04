@@ -2,7 +2,7 @@ Hello, welcome to Camery - my first public library so there should be a lot of m
 
 Camery is a library to facilitate taking single or multiple photos from camera or gallery with friendly UI - UX.
 
-Current version 1.0.1 
+Current version 1.0.2
 
 Here are steps to import Camery into your own project:
 
