@@ -148,7 +148,9 @@ class CameryActivity : AppCompatActivity() {
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                         outputFileResults.savedUri?.let {
                             if (isSavingToGallery) saveImageToGallery(file, it)
-                            else returnUriAndFinishActivity(it)
+                            else {
+                                returnUriAndFinishActivity(file, it)
+                            }
                         }
                     }
 
@@ -182,19 +184,19 @@ class CameryActivity : AppCompatActivity() {
                 null
             ) { _: String, savedUri: Uri ->
                 runOnUiThread {
-                    returnUriAndFinishActivity(savedUri)
+                    returnUriAndFinishActivity(file, savedUri)
                 }
             }
         } catch (e: Exception) {
 
         }
-        file.delete()
     }
 
-    private fun returnUriAndFinishActivity(uri: Uri) {
+    private fun returnUriAndFinishActivity(file: File, uri: Uri) {
         setResult(RESULT_OK, Intent().apply {
             putExtra(BundleKey.IMAGE_URI, uri)
         })
+        file.delete()
         finish()
     }
 
