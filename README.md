@@ -1,5 +1,9 @@
 Hello, welcome to Camery - my first public library so there should be a lot of mistakes and bugs >.< . So please feel free to create your MR if you have any advise or contribution for Camery. Thank you <3
 
+Camery is a library to facilitate taking single or multiple photos from camera or gallery with friendly UI - UX.
+
+Current version 1.0.1 
+
 Here are steps to import Camery into your own project:
 
 1/ Add "maven { url 'https://jitpack.io' }" into your settings.gradle
