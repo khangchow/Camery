@@ -35,6 +35,8 @@ class CameryActivity : AppCompatActivity() {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private lateinit var galleryFolderName: String
+    private var isSavingToGallery = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +44,11 @@ class CameryActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.actionBar)
 
-        (intent.getSerializableExtra(Camery.CONFIG_KEY) as? CameryConfig?)?.let {
+        (intent.getSerializableExtra(BundleKey.CONFIG))?.let {
             when (it) {
                 is CameraConfig -> {
-                    Log.d("CHOTAOTEST", "is camera config")
+                    galleryFolderName = it.galleryFolderName
+                    isSavingToGallery = it.isSavingToGallery
                 }
                 is GalleryConfig -> {
 
@@ -143,14 +146,13 @@ class CameryActivity : AppCompatActivity() {
                 Executors.newCachedThreadPool(),
                 object : ImageCapture.OnImageSavedCallback {
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                        if (outputFileResults.savedUri == null) return
-                        saveImageToGallery(file, outputFileResults.savedUri!!)
-//                        showCamera(cameraFacing)
-                        binding.rlLoading.invisible()
+                        outputFileResults.savedUri?.let {
+                            if (isSavingToGallery) saveImageToGallery(file, it)
+                            else returnUriAndFinishActivity(it)
+                        }
                     }
 
                     override fun onError(exception: ImageCaptureException) {
-                        binding.rlLoading.invisible()
                     }
 
                 })
@@ -160,7 +162,7 @@ class CameryActivity : AppCompatActivity() {
     private fun saveImageToGallery(file: File, uri: Uri) {
         val storageDir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-            "CustomCamera"
+            galleryFolderName
         ).also {
             if (it.exists().not()) it.mkdirs()
         }
@@ -191,7 +193,7 @@ class CameryActivity : AppCompatActivity() {
 
     private fun returnUriAndFinishActivity(uri: Uri) {
         setResult(RESULT_OK, Intent().apply {
-            putExtra(Camery.IMAGE_URI, uri)
+            putExtra(BundleKey.IMAGE_URI, uri)
         })
         finish()
     }

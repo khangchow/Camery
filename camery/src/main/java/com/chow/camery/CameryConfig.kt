@@ -7,7 +7,9 @@ abstract class CameryConfig : Serializable {
 }
 
 data class CameraConfig(
-    override val numOfImage: Int = 1
+    override val numOfImage: Int = 1,
+    val isSavingToGallery: Boolean = true,
+    val galleryFolderName: String = Constants.LIBRARY_NAME
 ) : CameryConfig()
 
 data class GalleryConfig(
