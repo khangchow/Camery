@@ -6,9 +6,17 @@ Current version 1.0.2
 
 Here are steps to import Camery into your own project:
 
-1/ Add "maven { url 'https://jitpack.io' }" into your settings.gradle
+1/ Add into your settings.gradle
 
-2/ Add "implementation 'com.github.khangchow:Camery:lastest_version'" into your build.gradle
+```
+maven { url 'https://jitpack.io' }
+```
+
+2/ Add into your build.gradle
+
+```
+implementation 'com.github.khangchow:Camery:lastest_version'
+```
 
 3/ How to use Camery's camera feature:
 
